@@ -1,0 +1,247 @@
+/* ------------------------------
+   -----------GLOBAL RESET & BASE----------
+------------------------------ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #1d4ed8;
+  --primary-dark: #133c9a;
+  --accent: #facc15;
+  --text-dark: #1e293b;
+  --text-light: #64748b;
+  --bg-light: #f8fafc;
+  --radius: 12px;
+  --shadow: 0px 8px 20px rgba(0,0,0,0.08);
+  --max-width: 1150px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: var(--bg-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+/* ------------------------------
+   ----------LAYOUT CONTAINER----------
+------------------------------ */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ------------------------------
+   ------------HERO SECTION-------------
+------------------------------ */
+.hero {
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.65)),
+              url("/images/univ-banner.jpg") center/cover no-repeat;
+  color: white;
+  padding: 90px 20px;
+  text-align: center;
+  border-bottom: 4px solid var(--primary);
+}
+
+.hero h1 {
+  font-size: 3rem;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  font-weight: 600;
+  text-shadow: 1px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero p {
+  font-size: 1.15rem;
+  max-width: 700px;
+  margin: 0 auto 25px auto;
+  color: #e2e8f0;
+}
+
+/* CTA BUTTONS */
+.ctas .btn {
+  margin: 6px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--primary);
+  color: white;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: 0.25s ease;
+}
+
+.ctas .btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-3px);
+}
+
+/* ------------------------------
+   ----------SECTION STYLING-----------
+------------------------------ */
+section {
+  margin: 40px 0;
+  padding: 25px;
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+section h2 {
+  margin-bottom: 14px;
+  font-size: 1.7rem;
+  color: var(--primary-dark);
+  border-left: 5px solid var(--primary);
+  padding-left: 12px;
+}
+
+/* ------------------------------
+   ------------COURSE LIST----------
+------------------------------ */
+#courseList li {
+  margin: 8px 0;
+  padding: 12px;
+  background: var(--bg-light);
+  border-left: 4px solid var(--primary);
+  border-radius: var(--radius);
+  list-style: none;
+  transition: 0.25s;
+}
+
+#courseList li:hover {
+  background: #e8efff;
+  transform: translateX(5px);
+}
+
+/* ------------------------------
+   ------------FORM DESIGN-----------
+------------------------------ */
+form label {
+  display: block;
+  margin-bottom: 16px;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+form input,
+form select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  transition: border 0.2s ease;
+}
+
+form input:focus,
+form select:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+form .consent {
+  display: flex;
+  align-items: center;
+}
+
+form .consent input {
+  width: auto;
+  margin-right: 10px;
+}
+
+#submitBtn {
+  background: var(--primary);
+  color: white;
+  font-weight: 600;
+  padding: 12px 18px;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+#submitBtn:hover {
+  background: var(--primary-dark);
+}
+
+#formStatus {
+  margin-left: 14px;
+  color: var(--primary-dark);
+  font-weight: 500;
+}
+
+/* ------------------------------
+   ---------MODAL WINDOW-----------
+------------------------------ */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.modal[aria-hidden="false"] {
+  display: flex;
+}
+
+.modal-content {
+  width: 90%;
+  max-width: 550px;
+  background: white;
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: var(--shadow);
+  position: relative;
+  animation: fadeUp 0.3s ease;
+}
+
+@keyframes fadeUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+.modal h3 {
+  color: var(--primary-dark);
+  margin-bottom: 15px;
+}
+
+.modal-close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  border: none;
+  background: #e2e8f0;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.modal-close:hover {
+  background: #cbd5e1;
+}
+
+/* ------------------------------
+   --------RESPONSIVE DESIGN---------
+------------------------------ */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+  .hero p {
+    font-size: 1rem;
+  }
+  section {
+    padding: 20px;
+  }
+}

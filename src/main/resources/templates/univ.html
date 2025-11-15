@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title th:text="${universityName} + ' - Admissions'">University</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+<header class="hero">
+    <div class="container">
+        <h1 th:text="${universityName}">University Name</h1>
+        <p>Leading private institute with modern facilities and placement support.</p>
+        <div class="ctas">
+            <button id="feesBtn" class="btn">Check Course-wise Fees</button>
+            <a href="#" class="btn" id="downloadBrochure">Download Brochure</a>
+            <button class="btn" onclick="document.getElementById('leadForm').scrollIntoView({behavior:'smooth'})">Apply Now</button>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <section id="overview">
+        <h2>Overview</h2>
+        <p>Short description about the university, vision, recognition and campus life.</p>
+    </section>
+
+    <section id="courses">
+        <h2>Courses</h2>
+        <ul id="courseList">
+            <li>B.Tech Computer Science</li>
+            <li>MBA</li>
+        </ul>
+    </section>
+
+    <section id="placements">
+        <h2>Placements</h2>
+        <p>Placement statistics and sample recruiters.</p>
+    </section>
+
+    <section id="facilities">
+        <h2>Facilities</h2>
+        <p>Hostel, labs, sports, library, cafeteria.</p>
+    </section>
+
+    <section id="lead" aria-label="Lead Form">
+        <h2>Register your interest</h2>
+        <form id="leadForm" onsubmit="submitLead(event, /*[[${universityCode}]]*/ '')">
+            <input type="hidden" id="universityCode" th:value="${universityCode}" />
+            <label>Full Name <input type="text" id="name" required /></label>
+            <label>Email <input type="email" id="email" required /></label>
+            <label>Phone <input type="text" id="phone" required placeholder="10-digit mobile" /></label>
+            <label>State
+                <select id="state">
+                    <option value="Delhi">Delhi</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                </select>
+            </label>
+            <label>Course Interested
+                <select id="course">
+                    <option value="BTECH">B.Tech Computer Science</option>
+                    <option value="MBA">MBA</option>
+                    <option value="BSC">B.Sc</option>
+                </select>
+            </label>
+            <label>Intake Year
+                <select id="intake">
+                    <option>2025</option>
+                    <option>2026</option>
+                </select>
+            </label>
+            <label class="consent">
+                <input type="checkbox" id="consent" /> I agree to be contacted
+            </label>
+
+            <div>
+                <button type="submit" id="submitBtn" class="btn">Submit</button>
+                <span id="formStatus" role="status"></span>
+            </div>
+        </form>
+    </section>
+</main>
+
+<!-- Modal -->
+<div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+        <button id="closeModal" class="modal-close">X</button>
+        <div id="modalBody">
+            <h3>Fees</h3>
+            <div id="feesContent" class="fees-container">Loading...</div>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/js/main.js}"></script>
+<script>
+    // pass universityCode from Thymeleaf into JS global
+    window.UNIVERSITY_CODE = [[${universityCode}]];
+</script>
+</body>
+</html>
